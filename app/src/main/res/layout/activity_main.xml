@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Weight"
+        android:text="@string/weight"
         android:textAppearance="@android:style/TextAppearance.Holo.Large"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,8 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Height"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:text="@string/height"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="@+id/ed_weight"
         app:layout_constraintTop_toBottomOf="@+id/ed_weight" />
 
@@ -53,18 +53,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:onClick="count"
-        android:text="Count"
+        android:text="@string/count"
         app:layout_constraintStart_toStartOf="@+id/ed_height"
         app:layout_constraintTop_toBottomOf="@+id/ed_height" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/help"
         android:layout_width="93dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Help"
+        android:text="@string/help"
         app:layout_constraintEnd_toEndOf="@+id/ed_height"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/ed_height" />
