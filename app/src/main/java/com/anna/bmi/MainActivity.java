@@ -1,6 +1,7 @@
 package com.anna.bmi;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edWeight;
     private EditText edHeight;
+
+
     //MyListener my = new MyListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findView();
         //help.setOnClickListener(my);
+        Log.d("MainActivity","onCreate");
     }
 
     private void findView() {
@@ -30,13 +34,48 @@ public class MainActivity extends AppCompatActivity {
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("onClick","OnClickListener");
+                Log.d("onClick", "OnClickListener");
                 new AlertDialog.Builder(MainActivity.this)
-                    .setMessage(R.string.bmi_info)
-                    .setPositiveButton(R.string.ok,null)
+                        .setMessage(R.string.bmi_info)
+                        .setPositiveButton(R.string.ok, null)
                         .show();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("MainActivity","onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("MainActivity","onStop");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("MainActivity","onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("MainActivity","onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("MainActivity","onRestart");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("MainActivity","onDestroy");
     }
 
     public void count(View view) {
@@ -48,21 +87,25 @@ public class MainActivity extends AppCompatActivity {
         float height = Float.parseFloat(h);
         float bmi = weight / (height * height);
         Log.d("MainActivity", bmi + " ");
-        Toast.makeText(this, "your bmi is " + bmi, Toast.LENGTH_LONG).show();
-        new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.your_bmi_is) + bmi)
-                .setTitle("BMI")
-                .setPositiveButton(R.string.ok, null)
-                .setNegativeButton(R.string.clear, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        edWeight.setText("");
-                        edHeight.setText("");
+        Intent intent = new Intent(this,ResultActivity.class);
+        intent.putExtra("Bmi" , bmi);
+        startActivity(intent);
 
-                    }
-                })
-//                       )
-                .show();
+//        Toast.makeText(this, "your bmi is " + bmi, Toast.LENGTH_LONG).show();
+//        new AlertDialog.Builder(this)
+//                .setMessage(getString(R.string.your_bmi_is) + bmi)
+//                .setTitle("BMI")
+//                .setPositiveButton(R.string.ok, null)
+//                .setNegativeButton(R.string.clear, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        edWeight.setText("");
+//                        edHeight.setText("");
+//
+//                    }
+//                })
+////                       )
+//                .show();
         //.setPositiveButton("ok", new DialogInterface.OnClickListener() {
 //                    @Override
 //                    public void onClick(DialogInterface dialog, int which) {
